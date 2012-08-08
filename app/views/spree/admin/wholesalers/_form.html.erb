@@ -5,22 +5,21 @@
 <div class="leftie">
   <fieldset class="wholesaler-details">
     <legend>Company Information</legend>
-
     <p>
-      <%= form.label :company %><br/>
-      <%= form.text_field :company, :class => 'required' %><span class="req">*</span>
+      <%= form.label :company %> <span class="required">*</span><br/>
+      <%= form.text_field :company, :class => 'required' %>
     </p>
     <p>
-      <%= form.label :buyer_contact %><br/>
-      <%= form.text_field :buyer_contact, :class => 'required' %><span class="req">*</span>
+      <%= form.label :buyer_contact %> <span class="required">*</span><br/>
+      <%= form.text_field :buyer_contact, :class => 'required' %>
     </p>
     <p>
-      <%= form.label :manager_contact %><br/>
-      <%= form.text_field :manager_contact, :class => 'required' %><span class="req">*</span>
+      <%= form.label :manager_contact %> <span class="required">*</span><br/>
+      <%= form.text_field :manager_contact, :class => 'required' %>
     </p>
     <p>
-      <%= form.label :phone %><br/>
-      <%= form.text_field :phone, :class => 'required' %><span class="req">*</span>
+      <%= form.label :phone %> <span class="required">*</span><br/>
+      <%= form.text_field :phone, :class => 'required' %>
     </p>
     <p>
       <%= form.label :fax %><br/>
@@ -31,16 +30,16 @@
       <%= form.text_field :resale_number %>
     </p>
     <p>
-      <%= form.label :taxid %><br/>
-      <%= form.text_field :taxid, :class => 'required' %><span class="req">*</span>
+      <%= form.label :taxid %> <span class="required">*</span><br/>
+      <%= form.text_field :taxid, :class => 'required' %>
     </p>
     <p>
       <%= form.label :web_address %><br/>
       <%= form.text_field :web_address %>
     </p>
     <p>
-      <%= form.label :terms %><br/>
-      <%= form.select :terms, Spree::Wholesaler.term_options, :class => 'required' %><span class="req">*</span>
+      <%= form.label :terms %> <span class="required">*</span><br/>
+      <%= form.select :terms, Spree::Wholesaler.term_options, :class => 'required' %>
     </p>
     <p>
       <%= form.label :notes %><br/>
@@ -51,13 +50,20 @@
   <fieldset class="user-details">
     <legend>User Details:</legend>
     <% if @wholesaler.new_record? %>
-      <%= form.fields_for :user do |uf| %>
-        <%= render 'spree/shared/user_form', :f => uf %>
-      <% end %>
+      <p>
+        <%= form.label :user %>
+        <%= form.select :user_id, Spree::User.all.map{ |u| [u.email, u.id] } %>
+      </p>
+      <div class='user_fields'>
+        <h2><%= t :or_create_new_user %></h2>
+        <%= form.fields_for :user do |uf| %>
+          <%= render 'spree/shared/user_form', :f => uf %>
+        <% end %>
+      </div>
     <% else %>
       <p>
-        <b>User Id:</b>
-        <%= link_to @wholesaler.user.id, admin_user_path(@wholesaler.user) %>
+        <b>User ID:</b>
+        <%= link_to @wholesaler.user_id, admin_user_path(@wholesaler.user) %>
         <br/>
         <%= link_to "view user", admin_user_path(@wholesaler.user) %> /
         <%= link_to "edit user", edit_admin_user_path(@wholesaler.user) %> /
