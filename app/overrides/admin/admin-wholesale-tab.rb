@@ -4,5 +4,5 @@ Deface::Override.new(
   :name => "admin-wholesale-tab",
   :insert_bottom => "[data-hook='admin_tabs']",
   :partial => "spree/admin/hooks/wholesale_tab",
-  :disabled => false
+  :disabled => true
 )
