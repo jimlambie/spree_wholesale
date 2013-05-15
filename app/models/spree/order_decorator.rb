@@ -36,7 +36,8 @@ Spree::Order.class_eval do
     save
   end
 
-  def add_variant(variant, quantity = 1)
+  def add_variant(variant, quantity = 1, currency)
+    # note that currency support is not yet implemented in any form other than the method signature
     current_item = contains?(variant)
     if current_item
       current_item.quantity += quantity
