@@ -27,6 +27,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency('capybara',     '~> 1.1.2')
   s.add_development_dependency('sqlite3',      '~> 1.3.4')
   #s.add_development_dependency('simplecov',    '~> 0.6.1')
-  s.add_development_dependency('rspec_rails')
 
 end
