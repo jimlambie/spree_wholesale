@@ -7,7 +7,7 @@ Spree::Order.class_eval do
   end
 
   def wholesaler
-    user && user.wholesaler
+    user if user.wholesaler?
   end
 
   def is_wholesale?
