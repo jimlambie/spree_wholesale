@@ -8,8 +8,8 @@ Spree::CheckoutController.class_eval do
 
   def get_addresses
     return unless spree_current_user && spree_current_user.wholesaler?
-    @order.bill_address = spree_current_user.wholesaler.bill_address
-    @order.ship_address = spree_current_user.wholesaler.ship_address
+    @order.bill_address = spree_current_user.bill_address
+    @order.ship_address = spree_current_user.ship_address
   end
 
   def remove_payments_attributes
