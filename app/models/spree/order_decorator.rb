@@ -38,7 +38,8 @@ Spree::Order.class_eval do
 
   def add_variant(variant, quantity = 1, currency = nil)
     # note that currency support is not yet implemented in any form other than the method signature
-    current_item = contains?(variant)
+    #current_item = contains?(variant)
+    current_item = find_line_item_by_variant(variant)
     if current_item
       current_item.quantity += quantity
       current_item.save
